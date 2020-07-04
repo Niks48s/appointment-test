@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @patient.email %></h1>
+    <p>
+      Your appointment with <%= @appointment&.doctor&.name %> has been accepted and will be within an hour.
+    </p>
+    <p>
+      So, please be present for booked appointment.
+    </p>
+    <p>Thanks you and have a great day!</p>
+  </body>
+</html>

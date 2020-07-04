@@ -21,6 +21,8 @@ gem 'rack-cors'
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
+gem 'sidekiq'
+gem "letter_opener", :group => :development
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
