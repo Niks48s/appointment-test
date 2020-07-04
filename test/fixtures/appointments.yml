@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  doctor_id: 1
+  scheduled_time: 2020-07-04 17:52:20
+  is_cancelled: false
+  cancellation_time: 2020-07-04 17:52:20
+  status: 1
+  notification_send: false
+
+two:
+  patient_id: 1
+  doctor_id: 1
+  scheduled_time: 2020-07-04 17:52:20
+  is_cancelled: false
+  cancellation_time: 2020-07-04 17:52:20
+  status: 1
+  notification_send: false

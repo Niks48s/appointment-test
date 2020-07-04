@@ -63,9 +63,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: {
-      status: {code: 200, message: 'Signed up successfully.'},
-      data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
-    }
+    if resource.id.present?
+      render json: {
+        status: {code: 200, message: 'Signed up successfully.'},
+        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+      }
+    else
+      render json: {
+        status: {code: 400, message: resource.errors.full_messages.join(', ')},
+      }
+    end
   end
 end

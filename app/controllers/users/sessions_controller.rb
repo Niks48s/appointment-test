@@ -3,7 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
   # before_action :configure_sign_in_params, only: [:create]
-
+  skip_before_action :verify_signed_out_user, only: [:destroy]
   # GET /resource/sign_in
   # def new
   #   super
@@ -28,10 +28,16 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: {
-    status: {code: 200, message: 'Logged in successfully.'},
-    data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
-    }
+    if resource.id.present?
+      render json: {
+        status: {code: 200, message: 'Logged in successfully.'},
+        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+      }
+    else
+      render json: {
+        status: {message: 'Unable to login'},
+      }
+    end
   end
   
   def respond_to_on_destroy
