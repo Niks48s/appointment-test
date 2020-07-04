@@ -27,8 +27,7 @@ class Api::V1::AppointmentsController < ApplicationController
       if current_user&.role&.eql?('patient')
         appointment = Appointment.new(appointment_params)
         if appointment.save
-          # NotificationWorker.perform_at(appointment.scheduled_time - 1.hours, appointment.id)
-          NotificationWorker.perform_async(appointment.id)
+          NotificationWorker.perform_at(appointment.scheduled_time - 1.hours, appointment.id)
           render json: {
             status: {code: 200, message: 'Appointment created successfully.'},
             data: AppointmentSerializer.new(appointment).serializable_hash[:data][:attributes]
